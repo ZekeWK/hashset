@@ -1,7 +1,3 @@
-#include <hashset.h>
-
-
-
 HashSet hashset_create(void **storage, size_t len, size_t (*hash)(void *key), bool (*eq)(void *key1, void *key2)) {
     HashSet hashset;
     
@@ -74,7 +70,7 @@ void *hashset_find(HashSet hashset, void *element) {
     size_t start, step;
     hashset_start_step(hashset, element, &start, &step);
 
-    size_t i;
+    size_t i = start;
     do {
         void *element_pos = *(hashset.storage + i);
 
@@ -99,7 +95,7 @@ void *hashset_pop(HashSet hashset, void *element) {
     size_t start, step;
     hashset_start_step(hashset, element, &start, &step);
 
-    size_t i;
+    size_t i = start;
 
     do {
         void **bucket = hashset.storage + i;

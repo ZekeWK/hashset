@@ -11,12 +11,9 @@ It uses an open addressing double hashing algorithm.
 */
 
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
-
 
 ///The hashset struct.
 typedef struct HashSet {
@@ -56,7 +53,7 @@ void *hashset_insert(HashSet hashset, void *element);
 ///Attempts to find an equal element in the hashset. If it is found it will return a pointer to the equal element. If it is found it will return NULL
 void *hashset_find(HashSet hashset, void *element);
 
-///Attempts to find an equal element and remove it from the hashset. If finds an equal element it will return its pointer. If it does not, it will return NULL.
+///Attempts to find an equal element and remove it from the hashset. If it finds an equal element it will return its pointer. If it does not, it will return NULL.
 void *hashset_pop(HashSet hashset, void *element);
 
 ///Returns the number of elements in the hashset.
@@ -68,3 +65,6 @@ void *hashset_drain(HashSet *hashset);
 
 ///Will attempt to relocate the sets by draining the first into one created by the new storage and len. If it is succeded it will return the new hashset, if it failes due to insufficient space, it will return a HASHSET_NULL. The old hashset will at that point have been partially drained and the storage partially filled. If one wishes to retry one can restore the hashset from being drained (mentioned in hashset_drain) and attempt again. New storage does need to be filled with NULL.
 HashSet hashset_relocate(HashSet *hashset_old, void **storage_new, size_t len_new);
+
+
+#include "hashset.c"
